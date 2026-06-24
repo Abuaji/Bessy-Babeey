@@ -116,7 +116,7 @@ const ProductsSection = () => (
 
       <div className="products__grid">
         {products.map(p => (
-          <div className="product-card" key={p.id} id={p.id}>
+          <a href={`#/product/${p.id}`} className="product-card" key={p.id} id={p.id} style={{textDecoration: 'none', color: 'inherit'}}>
             {/* Image & Badge Wrapper */}
             <div className="product-card__image-wrap">
               <div className="product-card__image-inner">
@@ -184,7 +184,7 @@ const ProductsSection = () => (
               </div>
 
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -344,7 +344,7 @@ const CategoryGrid = () => (
         {topProducts.map((p) => (
           <a
             key={p.id}
-            href={`#${p.id}`}
+            href="#/shop"
             className={`cat-card cat-card--${p.gridSpan}`}
             style={{ '--card-bg': p.bg }}
             id={`cat-card-${p.id}`}

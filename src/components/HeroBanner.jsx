@@ -83,7 +83,7 @@ const HeroBanner = () => {
 
           {/* CTA buttons - aligned in a row */}
           <div className="hero__cta">
-            <a href="#shop" className="btn-primary" id="hero-shop-btn">
+            <a href="#/shop" className="btn-primary" id="hero-shop-btn">
               Shop Now
               <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <polyline points="9 18 15 12 9 6"/>

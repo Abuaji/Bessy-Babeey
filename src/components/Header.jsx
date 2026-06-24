@@ -55,15 +55,15 @@ const Navbar = () => {
 
   const leftLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Blogs', href: '#testimonials' },
-    { name: 'Collection', href: '#featured' },
-    { name: 'Kids', href: '#featured' },
+    { name: 'Blogs', href: '#/shop' },
+    { name: 'Collection', href: '#/shop' },
+    { name: 'Kids', href: '#/shop' },
   ];
   const rightLinks = [
-    { name: 'Accessories', href: '#featured' },
-    { name: 'Contact', href: '#footer' },
-    { name: 'Teddy', href: '#top-products' },
-    { name: 'Toy', href: '#top-products' },
+    { name: 'Accessories', href: '#/shop' },
+    { name: 'Contact', href: '#' },
+    { name: 'Teddy', href: '#/shop' },
+    { name: 'Toy', href: '#/shop' },
   ];
 
   const allLinks = [...leftLinks, ...rightLinks];
@@ -127,14 +127,14 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <button className="navbar__action-circle navbar__action-circle--cart" aria-label="Shopping cart">
+            <a href="#/cart" className="navbar__action-circle navbar__action-circle--cart" aria-label="Shopping cart" style={{ textDecoration: 'none' }}>
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <circle cx="9" cy="21" r="1"/>
                 <circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
               <span className="navbar__cart-badge-premium">0</span>
-            </button>
+            </a>
           </div>
 
         </div>
