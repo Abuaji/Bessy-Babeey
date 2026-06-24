@@ -2756,6 +2756,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 198;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  pointer-events: auto;
 }
 
 /* ── Mobile Hamburger & Navigation Dropdown ─────────────────── */
@@ -2806,6 +2807,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 199;
   border-bottom: 1px solid var(--gray-100);
+  pointer-events: auto;
 }
 
 .navbar__mobile-menu--open {
