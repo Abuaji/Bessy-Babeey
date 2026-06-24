@@ -1,6 +1,8 @@
-
+import { products, topProducts } from '../components/Sections';
 
 function ProductDetailsPage({ id }) {
+  const allProducts = [...products, ...topProducts];
+  const product = allProducts.find(p => p.id === id) || products[0];
 
   return (
     <div className="container" style={{ padding: '80px 20px', minHeight: '80vh' }}>
@@ -10,18 +12,16 @@ function ProductDetailsPage({ id }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '50px' }}>
         <div style={{ background: '#f5f5f7', borderRadius: '24px', padding: '40px', display: 'flex', justifyContent: 'center' }}>
           <img 
-            src="https://images.unsplash.com/photo-1559419131-778235338166?q=80&w=600&auto=format&fit=crop" 
-            alt="Product" 
-            style={{ width: '100%', maxWidth: '400px', borderRadius: '16px', objectFit: 'cover' }} 
+            src={product.img} 
+            alt={product.name} 
+            style={{ width: '100%', maxWidth: '400px', objectFit: 'contain', borderRadius: '16px' }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ fontSize: '12px', fontWeight: '800', color: 'var(--teal)', textTransform: 'uppercase', marginBottom: '10px' }}>Toys Collection</div>
-          <h1 style={{ fontSize: '3rem', color: 'var(--dark)', lineHeight: '1.1', marginBottom: '20px' }}>Teddy Bear {id}</h1>
-          <div style={{ fontSize: '2rem', fontWeight: '800', color: '#ff3b30', marginBottom: '24px' }}>$25.00</div>
-          <p style={{ color: 'var(--gray-600)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '40px' }}>
-            A soft, cuddly teddy bear perfect for kids of all ages. Made with high-quality, hypoallergenic materials. 
-            Bring joy and comfort to your little ones with this classic toy.
+        <div>
+          <h1 style={{ fontSize: '2.5rem', marginBottom: '20px', color: 'var(--dark)' }}>{product.name}</h1>
+          <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--teal)', marginBottom: '30px' }}>{product.price || '₹9,999'}</div>
+          <p style={{ fontSize: '1.1rem', color: 'var(--gray-600)', lineHeight: '1.8', marginBottom: '40px' }}>
+            Bring joy and comfort to your little ones with this classic toy. Built for safety, fun and adventure, it's the perfect companion for your child.
           </p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href="#/cart" className="product-card__btn-buy" style={{ padding: '16px 32px', fontSize: '1.1rem', textDecoration: 'none', textAlign: 'center' }}>Add to Cart</a>

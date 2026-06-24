@@ -328,7 +328,7 @@ const TopProducts = () => (
   </section>
 );
 
-export { ShopNowDivider, ProductsSection, TopProducts, CategoryGrid };
+export { ShopNowDivider, ProductsSection, TopProducts, CategoryGrid, products, topProducts };
 
 /* ── Category Grid (Study Table, High Chair, Battery Jeep, etc.) ── */
 const CategoryGrid = () => (
