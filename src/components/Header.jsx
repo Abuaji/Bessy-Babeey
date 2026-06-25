@@ -33,8 +33,19 @@ const Topbar = () => (
   </div>
 );
 
-const Navbar = () => {
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '#');
+
+  useEffect(() => {
+    const handleHash = () => {
+      setCurrentHash(window.location.hash || '#');
+      setMenuOpen(false); // Close menu when navigating via BottomNav or other means
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -55,18 +66,25 @@ const Navbar = () => {
 
   const leftLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Blogs', href: '#/shop' },
+    { name: 'Blogs', href: '#/blogs' },
     { name: 'Collection', href: '#/shop' },
-    { name: 'Kids', href: '#/shop' },
+    { name: 'Kids', href: '#/shop?q=kids' },
   ];
   const rightLinks = [
-    { name: 'Accessories', href: '#/shop' },
-    { name: 'Contact', href: '#' },
-    { name: 'Teddy', href: '#/shop' },
-    { name: 'Toy', href: '#/shop' },
+    { name: 'Accessories', href: '#/shop?q=accessories' },
+    { name: 'Contact', href: '#/contact' },
+    { name: 'Teddy', href: '#/shop?q=teddy' },
+    { name: 'Toy', href: '#/shop?q=toy' },
   ];
 
   const allLinks = [...leftLinks, ...rightLinks];
+
+  const isActive = (href) => {
+    if (href === '#' && currentHash === '#') return true;
+    if (href !== '#' && currentHash === href) return true;
+    if (href === '#/shop' && currentHash.startsWith('#/shop') && !currentHash.includes('?q=')) return true;
+    return false;
+  };
 
   return (
     <div className="navbar-wrap">
@@ -75,12 +93,27 @@ const Navbar = () => {
           
           {/* Left Group */}
           <div className="navbar__group navbar__group--left">
-            <button className="navbar__action-circle navbar__action-circle--search" aria-label="Search">
-              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </button>
+            <div className="navbar__search-wrapper navbar__search-wrapper--desktop" style={{ display: 'flex', alignItems: 'center', background: '#f5f5f7', borderRadius: '24px', padding: '2px 10px', border: '1px solid #eaeaea' }}>
+              <input 
+                type="text" 
+                placeholder="Search toys..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => { if(e.key === 'Enter') window.location.hash = `#/shop?q=${searchQuery}` }}
+                style={{ border: 'none', background: 'transparent', padding: '8px', outline: 'none', width: '130px', fontSize: '0.9rem' }}
+              />
+              <button 
+                className="navbar__action-circle navbar__action-circle--search" 
+                aria-label="Search"
+                onClick={() => window.location.hash = `#/shop?q=${searchQuery}`}
+                style={{ background: 'transparent', padding: '0', margin: '0', border: 'none', width: 'auto', height: 'auto', color: 'var(--gray-600)' }}
+              >
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </button>
+            </div>
             
             {/* Hamburger Menu Icon for Mobile */}
             <button 
@@ -95,9 +128,9 @@ const Navbar = () => {
             </button>
 
             <ul className="navbar__nav navbar__nav--left">
-              {leftLinks.map((link, i) => (
+              {leftLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className={i === 0 && link.name === 'Home' ? 'active' : ''}>
+                  <a href={link.href} className={isActive(link.href) ? 'active' : ''}>
                     {link.name}
                   </a>
                 </li>
@@ -121,7 +154,7 @@ const Navbar = () => {
             <ul className="navbar__nav navbar__nav--right">
               {rightLinks.map(link => (
                 <li key={link.name}>
-                  <a href={link.href}>
+                  <a href={link.href} className={isActive(link.href) ? 'active' : ''}>
                     {link.name}
                   </a>
                 </li>
@@ -164,15 +197,45 @@ const Navbar = () => {
           <img src="/logo.png" alt="Toy Shop Logo" style={{ height: '48px', objectFit: 'contain' }} />
         </div>
 
+        {/* Mobile Search */}
+        <div style={{ padding: '0 20px 20px 20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', background: '#f5f5f7', borderRadius: '24px', padding: '5px 15px', border: '1px solid #eaeaea' }}>
+            <input 
+              type="text" 
+              placeholder="Search toys..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => { 
+                if(e.key === 'Enter') {
+                  window.location.hash = `#/shop?q=${searchQuery}`;
+                  setMenuOpen(false);
+                }
+              }}
+              style={{ border: 'none', background: 'transparent', padding: '10px', outline: 'none', flex: 1, fontSize: '1.1rem' }}
+            />
+            <button 
+              onClick={() => {
+                window.location.hash = `#/shop?q=${searchQuery}`;
+                setMenuOpen(false);
+              }}
+              style={{ background: 'transparent', border: 'none', color: 'var(--teal)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <ul className="navbar__mobile-nav">
-          {allLinks.map((link, i) => (
+          {allLinks.map((link) => (
             <li key={link.name} className="navbar__mobile-item">
               <a 
                 href={link.href} 
                 className="navbar__mobile-link"
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="navbar__mobile-link-num">0{i + 1}</span>
                 {link.name}
               </a>
             </li>
