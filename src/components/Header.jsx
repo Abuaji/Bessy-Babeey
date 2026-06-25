@@ -66,15 +66,11 @@ function Navbar() {
 
   const leftLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Blogs', href: '#/blogs' },
-    { name: 'Collection', href: '#/shop' },
-    { name: 'Kids', href: '#/shop?q=kids' },
+    { name: 'Jeeps', href: '#/shop?q=jeep' }
   ];
   const rightLinks = [
-    { name: 'Accessories', href: '#/shop?q=accessories' },
+    { name: 'Collection', href: '#/shop' },
     { name: 'Contact', href: '#/contact' },
-    { name: 'Teddy', href: '#/shop?q=teddy' },
-    { name: 'Toy', href: '#/shop?q=toy' },
   ];
 
   const allLinks = [...leftLinks, ...rightLinks];
@@ -166,7 +162,7 @@ function Navbar() {
                 <circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
-              <span className="navbar__cart-badge-premium">0</span>
+              <span className="navbar__cart-badge-premium">1</span>
             </a>
           </div>
 

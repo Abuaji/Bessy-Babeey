@@ -61,9 +61,6 @@ const HeroBanner = () => {
       </div>
 
       {/* Decorative floating emojis */}
-      <span className="hero__deco hero__deco--star1">⭐</span>
-      <span className="hero__deco hero__deco--heart1">💗</span>
-      <span className="hero__deco hero__deco--star2">✨</span>
 
       <div className="hero__inner">
         {/* Content */}

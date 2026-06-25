@@ -62,6 +62,7 @@ export function ProductCard({ product: p }) {
               <span className="product-card__price">{p.price}</span>
               <span className="product-card__old-price">{p.old}</span>
             </div>
+            {p.ageGroup && <span style={{ color: '#3b82f6', background: 'rgba(59, 130, 246, 0.1)', padding: '4px 10px', borderRadius: '12px', fontSize: '11px', fontWeight: '700' }}>{p.ageGroup}</span>}
           </div>
 
           <div className="product-card__colors">
@@ -80,7 +81,7 @@ export function ProductCard({ product: p }) {
             <button className="product-card__btn-cart" onClick={(e) => { e.preventDefault(); setIsQuickViewOpen(true); }}>
               Quick View
             </button>
-            <button className="product-card__btn-buy" onClick={(e) => e.preventDefault()}>
+            <button className="product-card__btn-buy" onClick={(e) => { e.preventDefault(); window.location.hash = `#/cart?id=${p.id}`; }}>
               Buy Now
             </button>
           </div>
@@ -116,7 +117,7 @@ export function ProductCard({ product: p }) {
                 </div>
                 <p style={{marginTop: '15px', color: 'var(--gray-600)', lineHeight: '1.6'}}>{p.specs?.join(' • ')}</p>
                 <div style={{marginTop: '25px', display: 'flex', gap: '15px'}}>
-                  <button className="product-card__btn-buy" style={{flex: 1, padding: '15px', fontSize: '16px'}}>Buy Now</button>
+                  <button className="product-card__btn-buy" style={{flex: 1, padding: '15px', fontSize: '16px'}} onClick={(e) => { e.preventDefault(); setIsQuickViewOpen(false); window.location.hash = `#/cart?id=${p.id}`; }}>Buy Now</button>
                   <button className="product-card__btn-cart" style={{flex: 1, padding: '15px', fontSize: '16px'}} onClick={() => { setIsQuickViewOpen(false); window.location.hash = `#/product/${p.id}`; }}>View Details</button>
                 </div>
               </div>

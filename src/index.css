@@ -831,13 +831,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .product-card__badge {
-  background: linear-gradient(135deg, var(--teal) 0%, #0ea4ad 100%);
-  color: white;
+  background: rgba(234, 88, 12, 0.1);
+  color: #ea580c;
   font-size: 10px;
   font-weight: 800;
   padding: 4px 10px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(23, 195, 206, 0.2);
+  border-radius: 12px;
+  text-transform: uppercase;
   width: fit-content;
 }
 
@@ -987,8 +987,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .product-card__btn-cart {
   background: transparent;
-  border: 1.5px solid var(--teal);
-  color: var(--teal);
+  border: 1.5px solid #3b82f6;
+  color: #3b82f6;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -1002,15 +1002,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .product-card__btn-cart:hover {
-  background: rgba(23, 195, 206, 0.06);
+  background: rgba(59, 130, 246, 0.06);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(23, 195, 206, 0.1);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
 }
 
 .product-card__btn-buy {
-  background: linear-gradient(135deg, #F5C842 0%, #e0a300 100%);
+  background: #3b82f6;
   border: none;
-  color: var(--dark);
+  color: #fff;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -1025,9 +1025,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .product-card__btn-buy:hover {
-  background: linear-gradient(135deg, #ffd359 0%, #f0af00 100%);
+  background: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(245, 200, 66, 0.38);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.38);
 }
 
 .product-card__btn-buy svg {
@@ -3396,3 +3396,130 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Shop Sidebar Layout */
+.shop-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .shop-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.shop-sidebar {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 100px;
+}
+
+.filter-section {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.filter-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--gray-600);
+  transition: color 0.2s;
+}
+
+.filter-checkbox:hover {
+  color: var(--dark);
+}
+
+.filter-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--gray-300);
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: #3b82f6;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-pill {
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: #f8fafc;
+  color: var(--gray-600);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.filter-colors {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+
+.filter-color:hover {
+  transform: scale(1.1);
+}
+
+.filter-color.active {
+  border-color: #3b82f6;
+  padding: 2px;
+  background-clip: content-box;
+}
+
+.price-range-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3b82f6;
+}

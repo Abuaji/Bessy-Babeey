@@ -139,11 +139,6 @@ export const Testimonials = () => {
   return (
     <section className="testimonials" id="reviews" style={{ position: 'relative', overflow: 'hidden' }}>
       {/* Decorative child-friendly floating elements */}
-      <span className="deco-shape deco-shape--1" style={{ top: '15%', left: '5%', color: '#17C3CE', fontSize: '1.6rem', animationDelay: '0s' }}>⭐</span>
-      <span className="deco-shape deco-shape--2" style={{ top: '75%', left: '4%', color: '#ffde03', fontSize: '2rem', animationDelay: '1.2s' }}>🌟</span>
-      <span className="deco-shape deco-shape--3" style={{ top: '12%', right: '6%', color: '#F4607A', fontSize: '1.8rem', animationDelay: '2.5s' }}>✨</span>
-      <span className="deco-shape deco-shape--4" style={{ top: '70%', right: '5%', color: '#6C63FF', fontSize: '2rem', animationDelay: '0.7s' }}>🎈</span>
-      <span className="deco-shape deco-shape--5" style={{ top: '40%', right: '50%', color: '#f5b800', fontSize: '1.5rem', opacity: '0.4' }}>🍭</span>
 
       <div className="container">
         <div className="testimonials__header">
@@ -400,10 +395,6 @@ export const Partners = () => {
   return (
     <section className="partners-section" style={{ position: 'relative', overflow: 'hidden' }}>
       {/* Decorative child-friendly floating elements */}
-      <span className="deco-shape deco-shape--1" style={{ top: '20%', left: '8%', color: '#F4607A', fontSize: '1.8rem', animationDelay: '0s' }}>⭐</span>
-      <span className="deco-shape deco-shape--2" style={{ top: '65%', left: '4%', color: '#17C3CE', fontSize: '1.5rem', animationDelay: '1.8s' }}>✨</span>
-      <span className="deco-shape deco-shape--3" style={{ top: '25%', right: '8%', color: '#ffde03', fontSize: '2.2rem', animationDelay: '0.9s' }}>🌟</span>
-      <span className="deco-shape deco-shape--4" style={{ top: '60%', right: '6%', color: '#6C63FF', fontSize: '1.7rem', animationDelay: '2.1s' }}>🎈</span>
 
       <div className="container">
         <h2 className="partners-section__title">We Are Also Available On</h2>

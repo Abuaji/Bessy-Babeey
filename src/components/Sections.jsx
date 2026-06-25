@@ -136,7 +136,10 @@ const products = [
     badge: 'Featured', 
     stars: 5,
     discount: '25% OFF',
-    specs: ['4x4 Drive', '12V Battery', 'Parent Control']
+    specs: ['4x4 Drive', '12V Battery', 'Parent Control'],
+    ageGroup: '2-8 Years',
+    colors: ['#3b82f6', '#f8fafc', '#0f172a'],
+    batteryType: '12V Rechargeable'
   },
   { 
     id: 'prod-police-jeep', 
@@ -148,7 +151,10 @@ const products = [
     badge: 'New', 
     stars: 5,
     discount: '25% OFF',
-    specs: ['Working Siren', 'LED Flashing Lights', 'Megaphone']
+    specs: ['Working Siren', 'LED Flashing Lights', 'Megaphone'],
+    ageGroup: '2-8 Years',
+    colors: ['#dc2626', '#0f172a', '#3b82f6'],
+    batteryType: '12V Rechargeable'
   },
   { 
     id: 'prod-titanx-jeep', 
@@ -160,7 +166,10 @@ const products = [
     badge: 'Premium', 
     stars: 5,
     discount: '24% OFF',
-    specs: ['Armoured Styling', 'Leather Seats', 'Dual Batteries']
+    specs: ['Armoured Styling', 'Leather Seats', 'Dual Batteries'],
+    ageGroup: '2-8 Years',
+    colors: ['#64748b', '#0f172a'],
+    batteryType: '12V Rechargeable'
   },
   { 
     id: 'prod-stormrider-jeep', 
@@ -172,7 +181,10 @@ const products = [
     badge: 'Best Seller', 
     stars: 5,
     discount: '22% OFF',
-    specs: ['All-Terrain Tires', 'Shock Absorbers', 'MP3 Player']
+    specs: ['All-Terrain Tires', 'Shock Absorbers', 'MP3 Player'],
+    ageGroup: '2-6 Years',
+    colors: ['#dc2626', '#f8fafc'],
+    batteryType: '12V Rechargeable'
   },
   { 
     id: 'prod-police-bike', 
@@ -267,7 +279,7 @@ const ProductsSection = () => (
       </div>
 
       <div className="products__grid" style={{ marginBottom: '60px' }}>
-        {products.filter(p => ['prod-1', 'prod-teddy-2', 'prod-acc-3', 'prod-toy-2'].includes(p.id)).map(p => (
+        {products.filter(p => ['prod-amg-jeep', 'prod-police-jeep', 'prod-titanx-jeep', 'prod-stormrider-jeep'].includes(p.id)).map(p => (
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
@@ -285,7 +297,7 @@ const ProductsSection = () => (
       </div>
 
       <div className="products__grid" style={{ marginBottom: '30px' }}>
-        {products.filter(p => ['prod-5', 'prod-teddy-4', 'prod-acc-2', 'prod-toy-4'].includes(p.id)).map(p => (
+        {products.filter(p => ['prod-police-bike', 'prod-bumblebee-trike', 'prod-study-table', 'prod-stroller'].includes(p.id)).map(p => (
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
@@ -359,11 +371,6 @@ const topProducts = [
 const TopProducts = () => (
   <section className="curated-picks" id="top-products">
     {/* Decorative floating elements for children's website theme */}
-    <span className="deco-shape deco-shape--1" style={{ top: '12%', left: '4%', color: '#ffde03', fontSize: '1.8rem', animationDelay: '0s' }}>⭐</span>
-    <span className="deco-shape deco-shape--2" style={{ top: '55%', left: '3%', color: '#F4607A', fontSize: '2.2rem', animationDelay: '1.5s' }}>🎈</span>
-    <span className="deco-shape deco-shape--3" style={{ top: '18%', right: '4%', color: '#17C3CE', fontSize: '1.6rem', animationDelay: '0.8s' }}>✨</span>
-    <span className="deco-shape deco-shape--4" style={{ top: '70%', right: '5%', color: '#f5b800', fontSize: '2rem', animationDelay: '2.3s' }}>🌟</span>
-    <span className="deco-shape deco-shape--5" style={{ top: '35%', left: '48%', color: '#6C63FF', fontSize: '1.5rem', animationDelay: '3.1s' }}>🍭</span>
 
     <div className="container">
       <h2 className="curated-picks__title">Curated Just for you</h2>
@@ -442,10 +449,6 @@ export { ShopNowDivider, ProductsSection, TopProducts, CategoryGrid, products, t
 const CategoryGrid = () => (
   <section className="cat-grid" id="categories">
     {/* Background deco */}
-    <span className="deco-shape deco-shape--1" style={{ top: '8%', left: '2%', color: '#ffde03', fontSize: '2rem' }}>⭐</span>
-    <span className="deco-shape deco-shape--2" style={{ top: '70%', left: '1%', color: '#F4607A', fontSize: '2.4rem', animationDelay: '1.2s' }}>🎈</span>
-    <span className="deco-shape deco-shape--3" style={{ top: '15%', right: '2%', color: '#17C3CE', fontSize: '1.8rem', animationDelay: '0.6s' }}>✨</span>
-    <span className="deco-shape deco-shape--4" style={{ top: '75%', right: '3%', color: '#f5b800', fontSize: '2.2rem', animationDelay: '2s' }}>🌟</span>
 
     <div className="container">
       <div className="cat-grid__cards">
